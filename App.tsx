@@ -1,20 +1,43 @@
+import * as React from 'react';
+import * as WebBrowser from 'expo-web-browser';
+import * as Google from 'expo-auth-session/providers/google';
+import { GoogleAuthProvider } from 'firebase/auth';
+import { Button, SafeAreaView } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { auth } from './src/helpers/firebase';
 
-export default function App() {
+WebBrowser.maybeCompleteAuthSession();
+
+const App = () => {
+  const [request, response, promptAsync] = Google.useIdTokenAuthRequest({
+    clientId: '202212711847-s8r8823gv362asmv89bif009l3ve9hjf.apps.googleusercontent.com',
+  });
+
+  React.useEffect(() => {
+    if (response?.type === 'success') {
+      const { id_token: idToken } = response.params;
+      const credential = GoogleAuthProvider.credential(idToken);
+      auth.signInWithCredential(credential);
+    }
+  }, [response]);
+
+  const logOut = () => {
+    auth.signOut();
+  };
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
+    <SafeAreaView>
       <StatusBar style="auto" />
-    </View>
+      <Button
+        disabled={!request}
+        title="Login"
+        onPress={() => {
+          promptAsync();
+        }}
+      />
+      <Button title="Logout" onPress={logOut} />
+    </SafeAreaView>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;

@@ -18,7 +18,8 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.expo.rreducational"
     },
     "android": {
       "adaptiveIcon": {
@@ -31,3 +32,4 @@
     }
   }
 }
+
