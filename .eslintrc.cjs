@@ -7,6 +7,7 @@ module.exports = {
     'import/resolver': {
       node: {
         extensions: ['.js', '.jsx', '.ts', '.tsx'],
+        paths: ['.'],
       },
     },
   },
@@ -57,6 +58,12 @@ module.exports = {
         jsx: 'never',
         ts: 'never',
         tsx: 'never',
+      },
+    ],
+    'import/no-unresolved': [
+      2,
+      {
+        ignore: ['env'],
       },
     ],
   },

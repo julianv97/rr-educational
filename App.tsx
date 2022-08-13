@@ -4,13 +4,14 @@ import * as Google from 'expo-auth-session/providers/google';
 import { GoogleAuthProvider } from 'firebase/auth';
 import { Button, SafeAreaView } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
+import { CLIENT_ID } from 'env';
 import { auth } from './src/helpers/firebase';
 
 WebBrowser.maybeCompleteAuthSession();
 
 const App = () => {
   const [request, response, promptAsync] = Google.useIdTokenAuthRequest({
-    clientId: '202212711847-s8r8823gv362asmv89bif009l3ve9hjf.apps.googleusercontent.com',
+    clientId: CLIENT_ID,
   });
 
   const login = async () => {
