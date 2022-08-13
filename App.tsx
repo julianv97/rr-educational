@@ -4,7 +4,7 @@ import * as Google from 'expo-auth-session/providers/google';
 import { GoogleAuthProvider } from 'firebase/auth';
 import { Button, SafeAreaView } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
-import { CLIENT_ID } from 'env';
+import { CLIENT_ID } from '@env';
 import { auth } from './src/helpers/firebase';
 
 WebBrowser.maybeCompleteAuthSession();
