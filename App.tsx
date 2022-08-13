@@ -13,13 +13,13 @@ const App = () => {
     clientId: '202212711847-s8r8823gv362asmv89bif009l3ve9hjf.apps.googleusercontent.com',
   });
 
-  React.useEffect(() => {
-    if (response?.type === 'success') {
-      const { id_token: idToken } = response.params;
-      const credential = GoogleAuthProvider.credential(idToken);
-      auth.signInWithCredential(credential);
-    }
-  }, [response]);
+  const login = async () => {
+    await promptAsync({ useProxy: true });
+    if (response?.type !== 'success') return;
+    const { id_token: idToken } = response.params;
+    const credential = GoogleAuthProvider.credential(idToken);
+    auth.signInWithCredential(credential);
+  };
 
   const logOut = () => {
     auth.signOut();
@@ -28,13 +28,7 @@ const App = () => {
   return (
     <SafeAreaView>
       <StatusBar style="auto" />
-      <Button
-        disabled={!request}
-        title="Login"
-        onPress={() => {
-          promptAsync();
-        }}
-      />
+      <Button disabled={!request} title="Login" onPress={login} />
       <Button title="Logout" onPress={logOut} />
     </SafeAreaView>
   );
