@@ -10,7 +10,7 @@ const Login = () => {
 
   return (
     <View style={styles.container}>
-      <ButtonSocialAuth name="google" title="Sign in with Google" onPress={handleGoogleAuth} />
+      <ButtonSocialAuth name="google" title="Login with Google" onPress={handleGoogleAuth} />
     </View>
   );
 };
