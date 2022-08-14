@@ -18,12 +18,11 @@ const useAuthState = create<AuthState>((set) => ({
   currentUser: '',
 
   login: async (response, promptAsync) => {
-    await promptAsync({ useProxy: true });
+    await promptAsync();
     if (response?.type !== 'success') return;
     const { id_token: idToken } = response.params;
     const credential = GoogleAuthProvider.credential(idToken);
     const { user } = await auth.signInWithCredential(credential);
-    console.log(user);
     set({
       isLoggedIn: true,
       currentUser: user?.displayName!,
