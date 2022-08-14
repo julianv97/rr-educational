@@ -21,7 +21,7 @@ const useAuthState = create<AuthState>((set) => ({
     const { user } = await auth.signInWithCredential(credential);
     set({
       isLoggedIn: true,
-      currentUser: user?.displayName!,
+      currentUser: user?.email!,
     });
   },
 
