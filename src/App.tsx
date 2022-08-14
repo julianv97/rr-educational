@@ -1,10 +1,11 @@
 import * as React from 'react';
 import * as WebBrowser from 'expo-web-browser';
 import { GoogleAuthProvider } from 'firebase/auth';
-import { Button, SafeAreaView } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
-import useGoogleAuth from './src/hooks/useGoogleAuth';
-import { auth } from './src/helpers/firebase';
+import { NavigationContainer } from '@react-navigation/native';
+import useGoogleAuth from './hooks/useGoogleAuth';
+import { auth } from './helpers/firebase';
+import AuthNavigator from './navigation/AuthNavigator';
 
 WebBrowser.maybeCompleteAuthSession();
 
@@ -24,11 +25,12 @@ const App = () => {
   };
 
   return (
-    <SafeAreaView>
+    <>
       <StatusBar style="auto" />
-      <Button title="Login" onPress={login} />
-      <Button title="Logout" onPress={logOut} />
-    </SafeAreaView>
+      <NavigationContainer>
+        <AuthNavigator />
+      </NavigationContainer>
+    </>
   );
 };
 
