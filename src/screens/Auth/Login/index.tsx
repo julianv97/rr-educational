@@ -1,22 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { View } from 'react-native';
 import ButtonSocialAuth from '../../../components/ButtonSocialAuth';
-import styles from './styles';
-
 import useBearStore from '../../../stores/auth';
 import useGoogleAuth from '../../../hooks/useGoogleAuth';
+import styles from './styles';
 
 const Login = () => {
   const { response, promptAsync } = useGoogleAuth();
   const { login } = useBearStore();
 
-  const handleGoogleAuth = () => {
-    login(response, promptAsync);
-  };
+  useEffect(() => {
+    login(response);
+  }, [response]);
 
   return (
     <View style={styles.container}>
-      <ButtonSocialAuth name="google" title="Login with Google" onPress={handleGoogleAuth} />
+      <ButtonSocialAuth name="google" title="Login with Google" onPress={() => promptAsync()} />
     </View>
   );
 };
