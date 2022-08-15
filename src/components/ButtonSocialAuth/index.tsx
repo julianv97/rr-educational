@@ -1,5 +1,4 @@
 import React from 'react';
-import { View } from 'react-native';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import TButtonName from '../../types';
 
