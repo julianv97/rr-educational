@@ -5,7 +5,7 @@ interface AuthState {
   currentUser: string;
   isLoading: boolean;
   isError: boolean;
-  login: (response: AuthSessionResult | null) => void;
+  login: (response: AuthSessionResult | null, navigation: any) => void;
   logout: () => void;
 }
 

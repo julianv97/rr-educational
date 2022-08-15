@@ -9,7 +9,7 @@ const useAuthState = create<AuthState>((set) => ({
   isLoading: false,
   isError: false,
 
-  login: async (response) => {
+  login: async (response, navigation) => {
     try {
       if (response?.type !== 'success') return;
       set({ isLoading: true });
@@ -21,6 +21,7 @@ const useAuthState = create<AuthState>((set) => ({
         currentUser: user?.email!,
         isLoading: false,
       });
+      navigation.navigate('Welcome');
     } catch (error) {
       set({ isError: true });
     }

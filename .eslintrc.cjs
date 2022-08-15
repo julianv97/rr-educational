@@ -32,6 +32,7 @@ module.exports = {
     '@typescript-eslint/no-shadow': ['error'],
     'no-unused-vars': 'off',
     '@typescript-eslint/no-unused-vars': ['error'],
+    'global-require': 'off',
     quotes: [2, 'single', { avoidEscape: true }],
     'react/function-component-definition': [
       2,
