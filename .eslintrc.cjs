@@ -27,6 +27,7 @@ module.exports = {
     'react/require-default-props': 'off',
     'react/style-prop-object': 'off',
     'import/no-extraneous-dependencies': 'off',
+    'import/prefer-default-export': 'off',
     'no-shadow': 'off',
     '@typescript-eslint/no-shadow': ['error'],
     'no-unused-vars': 'off',

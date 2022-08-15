@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react';
 import { View } from 'react-native';
 import ButtonSocialAuth from '../../../components/ButtonSocialAuth';
-import useBearStore from '../../../stores/auth';
+import { useAuthStore } from '../../../stores';
 import useGoogleAuth from '../../../hooks/useGoogleAuth';
 import styles from './styles';
 
 const Login = () => {
   const { response, promptAsync } = useGoogleAuth();
-  const { login } = useBearStore();
+  const { login } = useAuthStore();
 
   useEffect(() => {
     login(response);
