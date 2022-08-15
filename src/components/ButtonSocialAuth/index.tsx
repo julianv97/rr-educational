@@ -11,11 +11,9 @@ interface Props {
 
 const ButtonSocialAuth: React.FC<Props> = ({ name, title, onPress }) => {
   return (
-    <View>
-      <FontAwesome.Button name={name} backgroundColor="#4285F4" onPress={onPress}>
-        {title}
-      </FontAwesome.Button>
-    </View>
+    <FontAwesome.Button name={name} backgroundColor="#4285F4" onPress={onPress}>
+      {title}
+    </FontAwesome.Button>
   );
 };
 
