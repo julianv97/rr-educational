@@ -1,6 +1,6 @@
 import React from 'react';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
-import TButtonName from '../../types';
+import TButtonName from './types';
 
 interface Props {
   name: TButtonName;
