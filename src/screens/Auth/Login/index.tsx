@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { View } from 'react-native';
+import { View, Text, ImageBackground } from 'react-native';
 import ButtonSocialAuth from '../../../components/ButtonSocialAuth';
 import { useAuthStore } from '../../../stores';
 import useGoogleAuth from '../../../hooks/useGoogleAuth';
@@ -19,6 +19,22 @@ const Login: React.FC<Props> = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
+      <Text style={styles.title}>
+        <Text style={styles.radium}>Radium</Text>
+        <Text style={styles.rocket}>Rocket </Text>
+        Educational
+      </Text>
+
+      <ImageBackground
+        source={require('../../../../assets/rocket.jpeg')}
+        style={{
+          width: '100%',
+          height: '100%',
+          position: 'absolute',
+          top: 0,
+          right: 0,
+        }}
+      />
       <ButtonSocialAuth name="google" title="Login with Google" onPress={() => promptAsync()} />
     </View>
   );
