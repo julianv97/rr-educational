@@ -5,12 +5,16 @@ import { useAuthStore } from '../../../stores';
 import useGoogleAuth from '../../../hooks/useGoogleAuth';
 import styles from './styles';
 
-const Login: React.FC = () => {
+interface Props {
+  navigation: any;
+}
+
+const Login: React.FC<Props> = ({ navigation }) => {
   const { response, promptAsync } = useGoogleAuth();
   const { login } = useAuthStore();
 
   useEffect(() => {
-    login(response);
+    login(response, navigation);
   }, [response]);
 
   return (

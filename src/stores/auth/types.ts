@@ -5,8 +5,8 @@ interface AuthState {
   currentUser: string;
   isLoading: boolean;
   isError: boolean;
-  login: (response: AuthSessionResult | null) => void;
-  logout: () => void;
+  login: (response: AuthSessionResult | null, navigation: any) => void;
+  logout: (navigation: any) => void;
 }
 
 export default AuthState;
