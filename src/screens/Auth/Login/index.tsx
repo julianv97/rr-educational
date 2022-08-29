@@ -5,16 +5,12 @@ import { useAuthStore } from '../../../stores';
 import useGoogleAuth from '../../../hooks/useGoogleAuth';
 import styles from './styles';
 
-interface Props {
-  navigation: any;
-}
-
-const Login: React.FC<Props> = ({ navigation }) => {
+const Login: React.FC = () => {
   const { response, promptAsync } = useGoogleAuth();
   const { login } = useAuthStore();
 
   useEffect(() => {
-    login(response, navigation);
+    login(response);
   }, [response]);
 
   return (
@@ -27,15 +23,11 @@ const Login: React.FC<Props> = ({ navigation }) => {
 
       <ImageBackground
         source={require('../../../../assets/rocket.jpeg')}
-        style={{
-          width: '100%',
-          height: '100%',
-          position: 'absolute',
-          top: 0,
-          right: 0,
-        }}
+        style={styles.backgroundImage}
       />
-      <ButtonSocialAuth name="google" title="Login with Google" onPress={() => promptAsync()} />
+      <View style={styles.loginButton}>
+        <ButtonSocialAuth name="google" title="Login with Google" onPress={() => promptAsync()} />
+      </View>
     </View>
   );
 };

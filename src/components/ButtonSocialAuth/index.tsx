@@ -1,5 +1,6 @@
 import React from 'react';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
+import { Colors } from '../../constants/theme';
 import TButtonName from './types';
 
 interface Props {
@@ -10,7 +11,7 @@ interface Props {
 
 const ButtonSocialAuth: React.FC<Props> = ({ name, title, onPress }) => {
   return (
-    <FontAwesome.Button name={name} backgroundColor="#4285F4" onPress={onPress}>
+    <FontAwesome.Button name={name} backgroundColor={Colors.GreenPrimary} onPress={onPress}>
       {title}
     </FontAwesome.Button>
   );

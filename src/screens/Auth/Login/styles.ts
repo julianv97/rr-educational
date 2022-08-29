@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { Colors } from '../../../constants/theme';
 
 const styles = StyleSheet.create({
   container: {
@@ -6,20 +7,30 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     alignItems: 'center',
     position: 'relative',
-    backgroundColor: '#fff',
+    backgroundColor: Colors.White,
+  },
+  backgroundImage: {
+    width: '100%',
+    height: '100%',
+    position: 'absolute',
+    top: 0,
+    right: 0,
   },
   title: {
     fontSize: 25,
-    color: '#fff',
+    color: Colors.White,
     zIndex: 10,
     marginLeft: 20,
   },
   radium: {
-    color: '#71ab87',
+    color: Colors.GreenPrimary,
     fontWeight: 'bold',
   },
   rocket: {
-    color: '#b0e2c3',
+    color: Colors.GreenSecondary,
+  },
+  loginButton: {
+    paddingTop: 20,
   },
 });
 
