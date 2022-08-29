@@ -5,7 +5,7 @@ import AuthState from './types';
 
 const useAuthState = create<AuthState>((set) => ({
   isLoggedIn: false,
-  currentUser: '',
+  currentUser: {},
   isLoading: false,
   isError: false,
 
@@ -18,7 +18,7 @@ const useAuthState = create<AuthState>((set) => ({
       const { user } = await auth.signInWithCredential(credential);
       set({
         isLoggedIn: true,
-        currentUser: user?.email!,
+        currentUser: user!,
         isLoading: false,
       });
       navigation.navigate('ContentNavigator', { screen: 'Home' });
@@ -33,7 +33,7 @@ const useAuthState = create<AuthState>((set) => ({
       await auth.signOut();
       set({
         isLoggedIn: false,
-        currentUser: '',
+        currentUser: {},
         isLoading: false,
       });
       navigation.navigate('AuthNavigator', { screen: 'Login' });
