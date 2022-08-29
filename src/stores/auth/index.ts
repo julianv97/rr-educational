@@ -9,7 +9,7 @@ const useAuthState = create<AuthState>((set) => ({
   isLoading: false,
   isError: false,
 
-  login: async (response) => {
+  login: async (response, navigation) => {
     try {
       if (response?.type !== 'success') return;
       set({ isLoading: true });
@@ -21,12 +21,13 @@ const useAuthState = create<AuthState>((set) => ({
         currentUser: user?.email!,
         isLoading: false,
       });
+      navigation.navigate('ContentNavigator', { screen: 'Home' });
     } catch (error) {
       set({ isError: true });
     }
   },
 
-  logout: async () => {
+  logout: async (navigation) => {
     try {
       set({ isLoading: true });
       await auth.signOut();
@@ -35,6 +36,7 @@ const useAuthState = create<AuthState>((set) => ({
         currentUser: '',
         isLoading: false,
       });
+      navigation.navigate('AuthNavigator', { screen: 'Login' });
     } catch (error) {
       set({ isError: true });
     }
